@@ -33,7 +33,7 @@ public class MaybeTest
 
 
     [Fact]
-    public void Match_WhenSome_ReturnsResultOfSome()
+    public void Match_WhenSomeIsFunc_ReturnsResultOfSome()
     {
         // Arrange
         var sut = "Somestring".Some();
@@ -47,7 +47,24 @@ public class MaybeTest
 
 
     [Fact]
-    public void Match_WhenNone_ReturnsResultOfNone()
+    public void Match_WhenSomeFuncIsNull_ThrowsException_1()
+    {
+        // Arrange
+        var sut = "Somestring".Some();
+
+        // Act
+        var exception = Assert.Throws<ArgumentNullException>(
+            () => sut.Match(false, default)
+        );
+
+        // Assert
+        exception.Should().NotBeNull();
+        exception.ParamName.Should().Be("some");
+    }
+
+
+    [Fact]
+    public void Match_WhenNoneIsValue_ReturnsResultOfNone()
     {
         // Arrange
         var sut = Maybe<string>.None();
@@ -57,5 +74,53 @@ public class MaybeTest
 
         // Assert
         result.Should().BeTrue();
+    }
+
+
+    [Fact]
+    public void Match_WhenNoneIsFunc_ReturnsResultOfNone()
+    {
+        // Arrange
+        var sut = Maybe<string>.None();
+
+        // Act
+        var result = sut.Match(() => true, _ => false);
+
+        // Assert
+        result.Should().BeTrue();
+    }
+
+
+    [Fact]
+    public void Match_WhenNoneFuncIsNull_ThrowsException()
+    {
+        // Arrange
+        var sut = Maybe<string>.None();
+
+        // Act
+        var exception = Assert.Throws<ArgumentNullException>(
+            () => sut.Match(null, _ => false)
+        );
+
+        // Assert
+        exception.Should().NotBeNull();
+        exception.ParamName.Should().Be("none");
+    }
+
+
+    [Fact]
+    public void Match_WhenSomeFuncIsNull_ThrowsException_2()
+    {
+        // Arrange
+        var sut = "Somestring".Some();
+
+        // Act
+        var exception = Assert.Throws<ArgumentNullException>(
+            () => sut.Match(() => false, default)
+        );
+
+        // Assert
+        exception.Should().NotBeNull();
+        exception.ParamName.Should().Be("some");
     }
 }

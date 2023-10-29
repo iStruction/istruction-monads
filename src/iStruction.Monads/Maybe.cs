@@ -41,5 +41,21 @@ namespace iStruction.Monads
 
             return _hasItem ? some(_item) : none;
         }
+
+
+        public TResult Match<TResult>(Func<TResult> none, Func<TItem, TResult> some)
+        {
+            if (none == null)
+            {
+                throw new ArgumentNullException(nameof(none));
+            }
+
+            if (some == null)
+            {
+                throw new ArgumentNullException(nameof(some));
+            }
+
+            return _hasItem ? some(_item) : none();
+        }
     }
 }
