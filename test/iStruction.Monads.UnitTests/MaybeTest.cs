@@ -1,6 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 
-using iStruction.Monads.FluentAssertions;
+using FluentAssertions;
 
 
 namespace iStruction.Monads.UnitTests;
@@ -29,5 +29,33 @@ public class MaybeTest
 
         // Assert
         result.Should().BeSome();
+    }
+
+
+    [Fact]
+    public void Match_WhenSome_ReturnsResultOfSome()
+    {
+        // Arrange
+        var sut = "Somestring".Some();
+
+        // Act
+        var result = sut.Match(false, _ => true);
+
+        // Assert
+        result.Should().BeTrue();
+    }
+
+
+    [Fact]
+    public void Match_WhenNone_ReturnsResultOfNone()
+    {
+        // Arrange
+        var sut = Maybe<string>.None();
+
+        // Act
+        var result = sut.Match(true, _ => false);
+
+        // Assert
+        result.Should().BeTrue();
     }
 }

@@ -13,7 +13,7 @@ namespace iStruction.Monads
 
     public readonly struct Maybe<TItem>
     {
-        //private readonly bool _hasItem;
+        private readonly bool _hasItem;
         private readonly TItem _item;
 
 
@@ -27,8 +27,19 @@ namespace iStruction.Monads
                 throw new ArgumentNullException(nameof(item));
             }
 
-            _item    = item;
-            //_hasItem = true;
+            _item = item;
+            _hasItem = true;
+        }
+
+
+        public TResult Match<TResult>(TResult none, Func<TItem, TResult> some)
+        {
+            if (some == null)
+            {
+                throw new ArgumentNullException(nameof(some));
+            }
+
+            return _hasItem ? some(_item) : none;
         }
     }
 }

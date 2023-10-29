@@ -1,9 +1,11 @@
-using FluentAssertions;
 using FluentAssertions.Execution;
 using FluentAssertions.Primitives;
 
+using iStruction.Monads;
 
-namespace iStruction.Monads.FluentAssertions
+
+// ReSharper disable once CheckNamespace
+namespace FluentAssertions
 {
     public static class AssertionMaybe
     {
@@ -12,6 +14,7 @@ namespace iStruction.Monads.FluentAssertions
             return new MaybeAssertions<T>(instance);
         }
     }
+
 
     public class MaybeAssertions<T> : ReferenceTypeAssertions<Maybe<T>, MaybeAssertions<T>>
     {
@@ -28,8 +31,7 @@ namespace iStruction.Monads.FluentAssertions
         {
             Execute
                 .Assertion
-                //.ForCondition(Subject.Match(true, x => false))
-                .ForCondition(true)
+                .ForCondition(Subject.Match(true, x => false))
                 .FailWith("Maybe is not None.");
 
             return new AndConstraint<MaybeAssertions<T>>(this);
@@ -40,8 +42,7 @@ namespace iStruction.Monads.FluentAssertions
         {
             Execute
                 .Assertion
-                .ForCondition(true)
-                //.ForCondition(Subject.Match(false, x => true))
+                .ForCondition(Subject.Match(false, x => true))
                 .FailWith("Maybe is not Some.");
 
             return new AndConstraint<MaybeAssertions<T>>(this);
