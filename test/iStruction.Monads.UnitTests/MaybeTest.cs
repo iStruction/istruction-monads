@@ -33,6 +33,21 @@ public class MaybeTest
 
 
     [Fact]
+    public void Maybe_WhenCreateSomeWithNull_ThrowsException()
+    {
+        // Arrange
+        // Act
+        var exception = Assert.Throws<ArgumentNullException>(
+            () => default(string).Some()
+        );
+
+        // Assert
+        exception.Should().NotBeNull();
+        exception.ParamName.Should().Be("item");
+    }
+
+
+    [Fact]
     public void Match_WhenSomeIsFunc_ReturnsResultOfSome()
     {
         // Arrange
@@ -85,6 +100,20 @@ public class MaybeTest
 
         // Act
         var result = sut.Match(() => true, _ => false);
+
+        // Assert
+        result.Should().BeTrue();
+    }
+
+
+    [Fact]
+    public void Match_WhenNoneIsFunc_ReturnsResultOfSome()
+    {
+        // Arrange
+        var sut = "Somestring".Some();
+
+        // Act
+        var result = sut.Match(() => false, _ => true);
 
         // Assert
         result.Should().BeTrue();
