@@ -23,4 +23,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\iStruction.Monads.FluentAssertions\iStruction.Monads.FluentAssertions.csproj" />
+    <ProjectReference Include="..\..\src\iStruction.Monads\iStruction.Monads.csproj" />
+  </ItemGroup>
+
 </Project>
