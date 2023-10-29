@@ -18,6 +18,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iStruction.Monads", "src\iS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iStruction.Monads.UnitTests", "test\iStruction.Monads.UnitTests\iStruction.Monads.UnitTests.csproj", "{4065BFCD-7DC5-4CCB-A9B6-C1FAAAC2247D}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iStruction.Monads.FluentAssertions", "src\iStruction.Monads.FluentAssertions\iStruction.Monads.FluentAssertions.csproj", "{DD619586-A7B1-4F66-BEE6-6AD4C097DF3B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,8 +34,15 @@ Global
 		{4065BFCD-7DC5-4CCB-A9B6-C1FAAAC2247D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4065BFCD-7DC5-4CCB-A9B6-C1FAAAC2247D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4065BFCD-7DC5-4CCB-A9B6-C1FAAAC2247D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD619586-A7B1-4F66-BEE6-6AD4C097DF3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD619586-A7B1-4F66-BEE6-6AD4C097DF3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD619586-A7B1-4F66-BEE6-6AD4C097DF3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD619586-A7B1-4F66-BEE6-6AD4C097DF3B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C161B181-EE81-4C04-B5B8-C2572BBF4AB8}
 	EndGlobalSection
 EndGlobal
