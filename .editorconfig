@@ -1,0 +1,22 @@
+# Editor configuration, see http://editorconfig.org
+root = true
+
+# All files
+[*]
+charset = utf-8
+indent_style = space
+indent_size = 4
+insert_final_newline = true
+trim_trailing_whitespace = true
+guidelines = 80
+guidelines_style = 1px dotted black
+
+# C# or VB files
+[*.{cs,vb}]
+guidelines = 80, 120
+guidelines_style = 1px dashed 40ff0000
+
+[*.csproj]
+indent_size = 2
+indent_style = space
+insert_final_newline = true

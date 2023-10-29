@@ -1,0 +1,26 @@
+# IDEs and editors
+/.vs
+.vscode
+
+# Dotnet
+[Oo]bj/
+[Bb]in/
+*.user
+*.sqlproj.user
+*.csproj.user
+*.dbmdl
+*.jfm
+/TestResults
+
+# Application
+thumbs.db
+.vs
+.vs/config/applicationhost.config
+
+# ReSharper is a .NET coding add-in
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# Miscellaneous
+*.bak
